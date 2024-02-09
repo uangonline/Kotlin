@@ -1,7 +1,5 @@
 package com.example.hsiquiz1
 
-import android.graphics.drawable.Icon
-import android.media.Image
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -16,16 +14,19 @@ import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.rounded.Home
+import androidx.compose.material.icons.rounded.Person
+import androidx.compose.material.icons.rounded.Search
 import androidx.compose.material3.Button
-import androidx.compose.material3.ButtonColors
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
-import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -71,6 +72,7 @@ fun LogoAtas() {
         contentDescription = "Logo",
         modifier = Modifier
             .width(100.dp)
+            .padding(20.dp)
     )
 }
 @Composable
@@ -81,7 +83,8 @@ fun Badan(name: String, modifier: Modifier = Modifier) {
                 color = Color.LightGray,
                 shape = RoundedCornerShape(18.dp)
             )
-            .padding(18.dp)
+            .padding(30.dp)
+            .width(280.dp)
     ) {
         Column(
             horizontalAlignment = Alignment.CenterHorizontally
@@ -96,12 +99,16 @@ fun Badan(name: String, modifier: Modifier = Modifier) {
             )
             Text(
                 text = "Untuk bisa memulai pencarian pasangan, Antum harus mengisi form CV antum terlebih dahulu",
-                fontSize = 10.sp,
+                fontSize = 12.sp,
                 textAlign = TextAlign.Center,
             )
             Image(
                 painter = painterResource(R.drawable.cv__1_),
-                contentDescription = "CV nya")
+                contentDescription = "CV nya",
+                modifier = Modifier
+                    .padding(20.dp)
+                    .size(100.dp)
+            )
             TombolTengah()
         }
     }
@@ -134,26 +141,41 @@ fun TombolTengah() {
 
 @Composable
 fun TombolBawah() {
-    //Row(
-       // verticalAlignment = Alignment.CenterVertically,
-        // = Arrangement.SpaceAround,
-        //modifier = Modifier
-            //.fillMaxWidth()
-            //.fillMaxHeight()
-    //) {
-        val icon1 = painterResource(R.drawable.tombohome)
+    Row(
+        verticalAlignment = Alignment.CenterVertically,
+        horizontalArrangement = Arrangement.SpaceAround,
+        modifier = Modifier
+            .fillMaxWidth()
+            .fillMaxHeight()
+    ) {
         Column(
-            modifier = Modifier,
-            horizontalAlignment = Alignment.CenterHorizontally
+            horizontalAlignment =  Alignment.CenterHorizontally
         ) {
             Icon(
-                painter = icon1,
+                imageVector = Icons.Rounded.Home,
                 contentDescription = "iconhome",
             )
-            //Text(text = "tex")
+            Text(text = "Home")
         }
-
-    //}
+        Column(
+            horizontalAlignment =  Alignment.CenterHorizontally
+        ) {
+            Icon(
+                imageVector = Icons.Rounded.Search,
+                contentDescription = "iconsearch",
+            )
+            Text(text = "Pencarian")
+        }
+        Column(
+            horizontalAlignment =  Alignment.CenterHorizontally
+        ) {
+            Icon(
+                imageVector = Icons.Rounded.Person,
+                contentDescription = "iconprofil",
+            )
+            Text(text = "Profil")
+        }
+    }
 }
 
 @Preview(showBackground = true)
